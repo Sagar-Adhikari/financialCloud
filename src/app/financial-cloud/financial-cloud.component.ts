@@ -55,6 +55,10 @@ export class FinancialCloudComponent implements OnInit {
   }
 
   public handlePage(e: any) {
+    console.log(
+      '🚀 ~ file: financial-cloud.component.ts ~ line 58 ~ FinancialCloudComponent ~ handlePage ~ e',
+      e
+    );
     this.currentPage = e.pageIndex;
     this.pageSize = e.pageSize;
     this.iterator();
