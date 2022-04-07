@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -20,9 +20,13 @@ export interface PeriodicElement {
   styleUrls: ['./financial-cloud.component.scss'],
 })
 export class FinancialCloudComponent implements OnInit {
-  data: IPokeApi[] = [];
+  data: any = [];
   displayedColumns: string[] = ['#', 'name', 'url'];
   dataSource = new MatTableDataSource();
+
+  public pageSize = 10;
+  public currentPage = 0;
+  public totalSize = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -46,5 +50,20 @@ export class FinancialCloudComponent implements OnInit {
     const allPokemon = await this._financialCloudService.fetchAllPokemon();
     const { results } = allPokemon;
     this.data = results;
+    this.totalSize = this.data.length;
+    this.iterator();
+  }
+
+  public handlePage(e: any) {
+    this.currentPage = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.iterator();
+  }
+
+  private iterator() {
+    const end = (this.currentPage + 1) * this.pageSize;
+    const start = this.currentPage * this.pageSize;
+    const part = this.data.slice(start, end);
+    this.data = part;
   }
 }
