@@ -3,10 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "ng serve --host 0.0.0.0 --port=4200 --open",
+    "start:dev": "ng serve --host 0.0.0.0 --port=4200 --open",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint-fix": "ng lint --fix",
+    "branch-cleanup": "git remote prune origin",
+    "sync-with-master": "git fetch && git merge origin/master",
+    "prettier": "prettier --write **/*.*",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
