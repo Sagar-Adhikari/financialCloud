@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxLoadingModule } from 'ngx-loading';
 import { FinancialCloudComponent } from './financial-cloud.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [FinancialCloudComponent],
@@ -15,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     NgxLoadingModule.forRoot({}),
     MatTableModule,
+    MatPaginatorModule,
   ],
 
   exports: [],
