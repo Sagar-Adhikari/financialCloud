@@ -18,10 +18,6 @@ export class FinancialCloudService {
     this._globalService.setLoading(false);
   }
 
-  async fetchAllPokemon(): Promise<any> {
-    return await this._restApiService.get(`pokemon`);
-  }
-
   async FetchAllPokemon(page?: number, limit?: number): Promise<any> {
     return await this._restApiService.get(
       `pokemon?page=${page}&limit=${limit}`
