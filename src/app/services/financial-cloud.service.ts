@@ -22,9 +22,9 @@ export class FinancialCloudService {
     return await this._restApiService.get(`pokemon`);
   }
 
-  async FetchAllPokemon(page: number, limit: number): Promise<IPokeApi[]> {
+  async FetchAllPokemon(page?: number, limit?: number): Promise<any> {
     return await this._restApiService.get(
-      `/pokemon?page=${page}&limit=${limit}`
+      `pokemon?page=${page}&limit=${limit}`
     );
   }
 }
