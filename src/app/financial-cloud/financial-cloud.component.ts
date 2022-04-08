@@ -39,7 +39,13 @@ export class FinancialCloudComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.fetchAllPokemonWithPaginator(this.currentPage, this.pageSize);
+    try {
+      this.loading = true;
+      await this.fetchAllPokemonWithPaginator(this.currentPage, this.pageSize);
+      this.loading = false;
+    } catch (error) {
+      this.loading = false;
+    }
     this.dataSource = new MatTableDataSource(this.data);
     this.iterator();
   }
@@ -61,6 +67,7 @@ export class FinancialCloudComponent implements OnInit {
 
   async fetchAllPokemonWithPaginator(page?: number, limit?: number) {
     try {
+      this.loading = true;
       const allPokemon = await this._financialCloudService.FetchAllPokemon(
         page,
         limit
@@ -69,7 +76,10 @@ export class FinancialCloudComponent implements OnInit {
       this.data = results;
       this.totalSize = this.data.length;
       this.iterator();
-    } catch (error) {}
+      this.loading = false;
+    } catch (error) {
+      this.loading = false;
+    }
   }
 
   async applyFilter(event: Event) {

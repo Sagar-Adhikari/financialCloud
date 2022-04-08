@@ -2,6 +2,8 @@
   <mat-label>Search Pokemon</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Pokemon" #input />
 </mat-form-field>
+
+<ngx-loading [show]="loading"></ngx-loading>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="data" class="mat-elevation-z8">
     <ng-container matColumnDef="#">
