@@ -8,10 +8,10 @@ import { GlobalService } from './services/global.service';
 })
 export class AppComponent {
   title = 'financialCloud';
-  isOpenSideNavBar = true;
+  isOpenSideNavBar = false;
   loading = false;
   pageTitle = 'Initial Title';
-  allowFooter = true;
+  allowFooter = false;
   smallScreen = false;
 
   constructor(private globalService: GlobalService) {
@@ -27,6 +27,6 @@ export class AppComponent {
   }
 
   onNavbarClicked() {
-    this.isOpenSideNavBar = false;
+    this.isOpenSideNavBar = true;
   }
 }
