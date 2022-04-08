@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPokeApi } from '../utils/pokeApi.interfaces';
+
 import { GlobalService } from './global.service';
 import { RestApiService } from './rest-api.service';
 
