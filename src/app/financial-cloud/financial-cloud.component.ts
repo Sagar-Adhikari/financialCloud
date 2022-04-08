@@ -60,14 +60,16 @@ export class FinancialCloudComponent implements OnInit {
   }
 
   async fetchAllPokemonWithPaginator(page?: number, limit?: number) {
-    const allPokemon = await this._financialCloudService.FetchAllPokemon(
-      page,
-      limit
-    );
-    const { results } = allPokemon;
-    this.data = results;
-    this.totalSize = this.data.length;
-    this.iterator();
+    try {
+      const allPokemon = await this._financialCloudService.FetchAllPokemon(
+        page,
+        limit
+      );
+      const { results } = allPokemon;
+      this.data = results;
+      this.totalSize = this.data.length;
+      this.iterator();
+    } catch (error) {}
   }
 
   async applyFilter(event: Event) {
